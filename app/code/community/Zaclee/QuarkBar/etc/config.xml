@@ -15,6 +15,26 @@
             </quarkbar>
         </models>
     </global>
+    
+    <!-- Add layout / template for QuarkBar -->
+    <frontend>
+        <layout>
+            <updates>
+                <quarkbar>
+                    <file>quarkbar.xml</file>
+                </quarkbar>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <quarkbar>
+                    <file>quarkbar.xml</file>
+                </quarkbar>
+            </updates>
+        </layout>
+    </adminhtml>
 
     <!-- Call observer for predispatching QuarkBar -->
     <global>

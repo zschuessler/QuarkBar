@@ -6,6 +6,9 @@ class Zaclee_QuarkBar_Model_Observer
     {
         $controller = $event->getController();
         
-        Zend_Debug::dump($event);exit;
+        echo '
+            <div class="quarkBar">test</div>
+            <div class="quarkBar-clear">&nbsp;</div>
+';
     }
 }
