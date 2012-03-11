@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zaclee_QuarkBar>
+            <version>0.1.0</version>
+        </Zaclee_QuarkBar>
+    </modules>
+    
+    <events>
+        <controller_action_predispatch>
+            <type>singleton</type>
+            <class>Zaclee_QuarkBar_Model_Observer</class>
+            <method>controller_action_predispatch</method>
+        </controller_action_predispatch>
+    </events>
+</config>
