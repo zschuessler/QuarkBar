@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zaclee_QuarkBar>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Zaclee_QuarkBar>
+    </modules>
+</config>
