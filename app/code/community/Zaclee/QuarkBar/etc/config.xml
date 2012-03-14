@@ -41,12 +41,20 @@
         <events>
             <controller_action_predispatch>
                 <observers>
-                    <Zaclee_QuarkBar_Model_Observer>
-                        <class>Zaclee_QuarkBar_Model_Observer</class>
+                    <Zaclee_QuarkBar_Model_PredispatchObserver>
+                        <class>Zaclee_QuarkBar_Model_PredispatchObserver</class>
                         <method>controller_action_predispatch</method>
-                    </Zaclee_QuarkBar_Model_Observer>
+                    </Zaclee_QuarkBar_Model_PredispatchObserver>
                 </observers>
             </controller_action_predispatch>
+            <admin_session_user_login_success>
+                <observers>
+                    <Zaclee_QuarkBar_Model_AdminLoginSuccessObserver>
+                        <class>Zaclee_QuarkBar_Model_AdminLoginSuccessObserver</class>
+                        <method>admin_session_user_login_success</method>
+                    </Zaclee_QuarkBar_Model_AdminLoginSuccessObserver>
+                </observers>
+            </admin_session_user_login_success>
         </events>
     </global>
     

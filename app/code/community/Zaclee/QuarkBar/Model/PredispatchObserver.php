@@ -1,6 +1,6 @@
 <?php
 
-class Zaclee_QuarkBar_Model_Observer
+class Zaclee_QuarkBar_Model_PredispatchObserver
 {
 
     protected $_isLoaded;
@@ -33,7 +33,7 @@ class Zaclee_QuarkBar_Model_Observer
      * 
      * @return bool 
      */
-    public function _isAdminModule()
+    protected function _isAdminModule()
     {
         if ('admin' == Mage::app()->getRequest()->getModuleName()) {
             return true;
@@ -45,7 +45,7 @@ class Zaclee_QuarkBar_Model_Observer
     /**
      * Shows the QuarkBar for administrator module 
      */
-    public function _showAdminBar()
+    protected function _showAdminBar()
     {
         echo 'admin';
     }
@@ -53,7 +53,7 @@ class Zaclee_QuarkBar_Model_Observer
     /**
      * Shows the QuarkBar for frontend store 
      */
-    public function _showFrontendBar()
+    protected function _showFrontendBar()
     {
        echo 'frontend';
     }
