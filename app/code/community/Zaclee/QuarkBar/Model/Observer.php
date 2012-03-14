@@ -8,7 +8,7 @@ class Zaclee_QuarkBar_Model_Observer
     public function controller_action_predispatch($event)
     {
         $request = Mage::app()->getRequest();
-        
+
         // Don't show a toolbar for ajax requests
         if ($request->isAjax()) {
             return;
@@ -55,7 +55,7 @@ class Zaclee_QuarkBar_Model_Observer
      */
     public function _showFrontendBar()
     {
-        echo 'frontend';
+       echo 'frontend';
     }
 
 }

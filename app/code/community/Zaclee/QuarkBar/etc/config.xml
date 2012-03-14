@@ -49,5 +49,29 @@
             </controller_action_predispatch>
         </events>
     </global>
+    
+    <!-- Add connection/setup -->
+    <global>
+        <resources>
+            <quarkbar_setup>
+                <setup>
+                    <module>Zaclee_QuarkBar</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </quarkbar_setup>
+            <quarkbar_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </quarkbar_write>
+            <quarkbar_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </quarkbar_read>
+        </resources>
+    </global>
 
 </config>
