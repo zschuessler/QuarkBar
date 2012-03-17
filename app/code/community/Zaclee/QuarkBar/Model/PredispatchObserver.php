@@ -20,7 +20,9 @@ class Zaclee_QuarkBar_Model_PredispatchObserver
         if ($this->_isAdminModule()) {
             $this->_showAdminBar();
         } else {
-            $this->_showFrontendBar();
+            if ($this->_authorizedAdmin()) {
+                $this->_showFrontendBar();
+            }
         }
 
         echo '</div>';
@@ -55,7 +57,20 @@ class Zaclee_QuarkBar_Model_PredispatchObserver
      */
     protected function _showFrontendBar()
     {
-       echo 'frontend';
+        echo Mage::app()->getLayout()
+                        ->createBlock('quarkbar/frontbar')
+                        ->toHtml();
+    }
+    
+    public function _authorizedAdmin()
+    {
+        $auth = Mage::getModel('core/cookie')->get('quark_bar');
+        
+        if ($auth == 'admin') {
+            return true;
+        }
+        
+        return false;
     }
 
 }

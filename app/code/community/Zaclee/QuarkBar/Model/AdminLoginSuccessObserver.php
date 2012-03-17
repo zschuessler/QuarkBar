@@ -5,13 +5,9 @@ class Zaclee_QuarkBar_Model_AdminLoginSuccessObserver
 
     public function admin_session_user_login_success($event)
     {
-        $admin = $event->getEvent();
+        $admin = $event->getEvent()->getUser();
 
-        $customer = Mage::getModel('customer/customer');
-        $customer->setWebsiteId(1);
-        $customer->loadByEmail($admin->getEmail());
-        
-        // todo: login via curl?
+        Mage::getModel('core/cookie')->set('quark_bar', 'admin');
     }
 
 }

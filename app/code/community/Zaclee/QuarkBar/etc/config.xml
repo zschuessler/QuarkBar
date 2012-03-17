@@ -16,6 +16,15 @@
         </models>
     </global>
     
+    <!-- Define Quark Block -->
+    <global>
+        <blocks>
+            <quarkbar>
+                <class>Zaclee_QuarkBar_Block</class>
+            </quarkbar>
+        </blocks>
+    </global>
+    
     <!-- Add layout / template for QuarkBar -->
     <frontend>
         <layout>
