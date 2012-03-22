@@ -48,14 +48,14 @@
     <!-- Call observer for predispatching QuarkBar -->
     <global>
         <events>
-            <controller_action_predispatch>
+            <controller_action_layout_generate_blocks_after>
                 <observers>
-                    <Zaclee_QuarkBar_Model_PredispatchObserver>
-                        <class>Zaclee_QuarkBar_Model_PredispatchObserver</class>
-                        <method>controller_action_predispatch</method>
-                    </Zaclee_QuarkBar_Model_PredispatchObserver>
+                    <Zaclee_QuarkBar_Model_GenerateBlocksAfterObserver>
+                        <class>Zaclee_QuarkBar_Model_Observer</class>
+                        <method>controller_action_layout_generate_blocks_after</method>
+                    </Zaclee_QuarkBar_Model_GenerateBlocksAfterObserver>
                 </observers>
-            </controller_action_predispatch>
+            </controller_action_layout_generate_blocks_after>
             <admin_session_user_login_success>
                 <observers>
                     <Zaclee_QuarkBar_Model_AdminLoginSuccessObserver>

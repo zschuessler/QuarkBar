@@ -1,11 +1,11 @@
 <?php
 
-class Zaclee_QuarkBar_Model_PredispatchObserver
+class Zaclee_QuarkBar_Model_Observer
 {
 
     protected $_isLoaded;
 
-    public function controller_action_predispatch($event)
+    public function controller_action_layout_generate_blocks_after($event)
     {
         $request = Mage::app()->getRequest();
 
@@ -15,8 +15,6 @@ class Zaclee_QuarkBar_Model_PredispatchObserver
         }
 
         // Show QuarkBar
-        echo '<div class="quarkBar">';
-
         if ($this->_isAdminModule()) {
             $this->_showAdminBar();
         } else {
@@ -24,10 +22,6 @@ class Zaclee_QuarkBar_Model_PredispatchObserver
                 $this->_showFrontendBar();
             }
         }
-
-        echo '</div>';
-
-        echo '<div class="clear">&nbsp;</div>';
     }
 
     /**
