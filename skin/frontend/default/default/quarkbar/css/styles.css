@@ -1,13 +1,8 @@
-.quarkBar {
-    background:#ffffff;
-    border-bottom: 3px solid red;
-    padding:10px;
+#quark-nav-status {
     width:100%;
-    text-align:left;
-}
-
-.quarkBar-Clear {
-    clear:both;
-    height:0;
-    line-height:0;
+    background-color: #fff;
+    padding:5px;
+    border:1px dotted #000;
+    display: none;
+    color:#666;
 }
