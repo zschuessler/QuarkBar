@@ -45,6 +45,9 @@ class Zaclee_QuarkBar_Block_Frontbar extends Mage_Core_Block_Template
                                 <li id="quark-clear-cache">
                                     <a href="#">Clear Cache</a>
                                 </li>
+                                <li id="quark-rebuild-indexes">
+                                    <a href="#">Rebuild Indexes</a>
+                                </li>
                             </ul>
                     </ul>
                     </div>
