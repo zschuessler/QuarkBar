@@ -44,6 +44,19 @@
             </updates>
         </layout>
     </adminhtml>
+    
+    <!-- Add Front Controller -->
+    <frontend>
+        <routers>
+            <quarkbar>
+                <use>standard</use>
+                <args>
+                    <module>Zaclee_QuarkBar</module>
+                    <frontName>quarkbar</frontName>
+                </args>
+            </quarkbar>
+        </routers>
+    </frontend>
 
     <!-- Call observer for predispatching QuarkBar -->
     <global>

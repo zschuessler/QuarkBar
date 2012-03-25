@@ -13,8 +13,9 @@ class Zaclee_QuarkBar_Block_Frontbar extends Mage_Core_Block_Template
     protected function _prepareLayout()
     {
         $this->getLayout()->getBlock('head')->addJs('quarkbar/jquery/jquery-1.7.2.min.js')
-                                            ->addJs('quarkbar/bootstrap/js/bootstrap.js')
-                                            ->addCss('quarkbar/bootstrap/css/bootstrap.min.css');
+                ->addJs('quarkbar/bootstrap/js/bootstrap.js')
+                ->addJs('quarkbar/quark.js')
+                ->addCss('quarkbar/bootstrap/css/bootstrap.min.css');
     }
 
     protected function _buildNavbar()
@@ -23,30 +24,31 @@ class Zaclee_QuarkBar_Block_Frontbar extends Mage_Core_Block_Template
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">
-                    <a class="brand" href="#">
+                    <a class="brand" href="/">
                         %s
                     </a>
                     <ul class="nav">
                         <li class="active">
-                            <a href="/admin">Admin</a>
+                            <a href="/admin">Dashboard</a>
                         </li>
                         
-<li class="dropdown">
-    <a href="#"
-          class="dropdown-toggle"
-          data-toggle="dropdown">
-          Account
-          <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li>test</li>
-    </ul>
+                        <li class="dropdown">
+                                <a href="#"
+                                class="dropdown-toggle"
+                                data-toggle="dropdown">
+                                Developer
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li id="quark-clear-cache">
+                                    <a href="#">Clear Cache</a>
+                                </li>
+                            </ul>
                     </ul>
                     </div>
                 </div>
-             </div>',
-            Mage::app()->getStore()->getName()
-                );
+             </div>', Mage::app()->getStore()->getName()
+        );
     }
-
+    
 }
