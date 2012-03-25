@@ -32,6 +32,8 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
                             %s
                         </li>
                         
+                        %s
+                        
                         <li class="dropdown">
                             <a href="#"
                                 class="dropdown-toggle"
@@ -55,12 +57,20 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
                     </div>
                 </div>
                 <div id="quark-nav-status" class="alert fade in"></div>
-             </div>',
-        Mage::app()->getStore()->getName(),
-        $this->_getDashboardLink()
+             </div>
+             <div style="clear:both;height:40px;"></div>',
+                Mage::app()->getStore()->getName(),
+                $this->_getDashboardLink(),
+                $this->_getPageEditLink()
         );
     }
 
+    /**
+     * Shows an admin link or a store link to easily switch between
+     * frontend/admin modules
+     * 
+     * @return string 
+     */
     protected function _getDashboardLink()
     {
         if ('admin' == Mage::app()->getRequest()->getModuleName()) {
@@ -68,6 +78,47 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
         } else {
             return '<a href="/admin">Admin Dashboard</a>';
         }
+    }
+
+    /**
+     * Supplies an edit link if a category or product page
+     * 
+     * @return string 
+     */
+    protected function _getPageEditLink()
+    {
+        // Edit links are only useful for the frontend module
+        if('admin' == Mage::app()->getRequest()->getModuleName() ) {
+            return;
+        }
+        
+        $salt = Mage::getModel('core/cookie')->get('quark_bar_salt');
+        
+        if (Mage::registry('current_product')) {
+            $secret = 'catalog_product' . 'edit' . $salt;
+            $key = Mage::helper('core')->getHash($secret);
+            
+            $product = Mage::getModel('catalog/product')
+               ->load(Mage::app()->getRequest()->getParam('id'));
+            
+            return sprintf('<li><a href="/admin/catalog_product/edit/id/%s/key/%s">Edit %s</a></li>',
+                    $product->getId(),
+                    $key,
+                    $this->htmlEscape($product->getName())
+                    );
+        }
+        
+        if(Mage::registry('current_category')) {
+            $secret = 'catalog_category' . 'index' . $salt;
+            $key = Mage::helper('core')->getHash($secret);
+            
+            return sprintf('<li><a href="/admin/catalog_category/index/key/%s">Edit Categories</a></li>',
+                    $key
+                    );
+            
+        }
+        
+        return;
     }
 
 }
