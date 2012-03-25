@@ -13,6 +13,7 @@ jQuery(document).ready(function() {
                 if( data.status == 1 ) {
                     status.html(data.message);
                     status.show('fast').fadeOut(3000);
+                    location.reload();
                 } else {
                     status.show('fast');
                 }
@@ -40,6 +41,7 @@ jQuery(document).ready(function() {
                 if( data.status == 1 ) {
                     status.html(data.message);
                     status.show('fast').fadeOut(3000);
+                    location.reload();
                 } else {
                     status.show('fast');
                 }

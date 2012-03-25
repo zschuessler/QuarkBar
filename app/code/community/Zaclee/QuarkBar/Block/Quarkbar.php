@@ -1,12 +1,10 @@
 <?php
 
-class Zaclee_QuarkBar_Block_Frontbar extends Mage_Core_Block_Template
+class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 {
 
     protected function _toHtml()
     {
-        $request = $this->getRequest();
-
         echo $this->_buildNavbar();
     }
 
@@ -30,31 +28,46 @@ class Zaclee_QuarkBar_Block_Frontbar extends Mage_Core_Block_Template
                         %s
                     </a>
                     <ul class="nav">
-                        <li class="active">
-                            <a href="/admin">Admin Dashboard</a>
+                        <li>
+                            %s
                         </li>
                         
                         <li class="dropdown">
-                                <a href="#"
+                            <a href="#"
                                 class="dropdown-toggle"
                                 data-toggle="dropdown">
                                 Developer
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
+                                <li class="nav-header">Cache / Indexes</li>
+                                <li class="divider"></li>
                                 <li id="quark-clear-cache">
                                     <a href="#">Clear Cache</a>
                                 </li>
                                 <li id="quark-rebuild-indexes">
                                     <a href="#">Rebuild Indexes</a>
                                 </li>
+                                <li class="divider"></li>
                             </ul>
+                        </li>
                     </ul>
                     </div>
                 </div>
                 <div id="quark-nav-status" class="alert fade in"></div>
-             </div>', Mage::app()->getStore()->getName()
+             </div>',
+        Mage::app()->getStore()->getName(),
+        $this->_getDashboardLink()
         );
     }
-    
+
+    protected function _getDashboardLink()
+    {
+        if ('admin' == Mage::app()->getRequest()->getModuleName()) {
+            return '<a href="/">View Frontend</a>';
+        } else {
+            return '<a href="/admin">Admin Dashboard</a>';
+        }
+    }
+
 }

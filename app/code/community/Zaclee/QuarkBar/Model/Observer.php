@@ -15,12 +15,11 @@ class Zaclee_QuarkBar_Model_Observer
         }
 
         // Show QuarkBar
-        if ($this->_isAdminModule()) {
-            $this->_showAdminBar();
-        } else {
-            if ($this->_authorizedAdmin()) {
-                $this->_showFrontendBar();
-            }
+
+        if ($this->_authorizedAdmin()) {
+            echo Mage::app()->getLayout()
+                    ->createBlock('quarkbar/quarkbar')
+                    ->toHtml();
         }
     }
 
@@ -38,32 +37,14 @@ class Zaclee_QuarkBar_Model_Observer
         return false;
     }
 
-    /**
-     * Shows the QuarkBar for administrator module 
-     */
-    protected function _showAdminBar()
-    {
-        echo 'admin';
-    }
-
-    /**
-     * Shows the QuarkBar for frontend store 
-     */
-    protected function _showFrontendBar()
-    {
-        echo Mage::app()->getLayout()
-                        ->createBlock('quarkbar/frontbar')
-                        ->toHtml();
-    }
-    
     public function _authorizedAdmin()
     {
         $auth = Mage::getModel('core/cookie')->get('quark_bar');
-        
+
         if ($auth == 'admin') {
             return true;
         }
-        
+
         return false;
     }
 
