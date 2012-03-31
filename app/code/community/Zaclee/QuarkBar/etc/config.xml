@@ -80,6 +80,24 @@
         </events>
     </global>
     
+    <!-- Add QuarkBar models -->
+    <global>
+        <models>
+            <quarkbar>
+                <class>Zaclee_QuarkBar_Model</class>
+                <resourceModel>oscommerce_mysql4</resourceModel>
+            </quarkbar>
+            <quarkbar_mysql4>
+                <class>Zaclee_QuarkBar_Model_Mysql4</class>
+                <entities>
+                    <quarksession>
+                        <table>quarkbar_session</table>
+                    </quarksession>
+                </entities>
+            </quarkbar_mysql4>       
+        </models>
+    </global>
+    
     <!-- Add connection/setup -->
     <global>
         <resources>
