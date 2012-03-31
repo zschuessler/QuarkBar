@@ -63,18 +63,18 @@
         <events>
             <controller_action_layout_generate_blocks_after>
                 <observers>
-                    <Zaclee_QuarkBar_Model_GenerateBlocksAfterObserver>
+                    <Zaclee_QuarkBar_Model_GenerateBlocksAfter>
                         <class>Zaclee_QuarkBar_Model_Observer</class>
                         <method>controller_action_layout_generate_blocks_after</method>
-                    </Zaclee_QuarkBar_Model_GenerateBlocksAfterObserver>
+                    </Zaclee_QuarkBar_Model_GenerateBlocksAfter>
                 </observers>
             </controller_action_layout_generate_blocks_after>
             <admin_session_user_login_success>
                 <observers>
-                    <Zaclee_QuarkBar_Model_AdminLoginSuccessObserver>
-                        <class>Zaclee_QuarkBar_Model_AdminLoginSuccessObserver</class>
+                    <Zaclee_QuarkBar_Model_Observer_AdminLoginSuccess>
+                        <class>Zaclee_QuarkBar_Model_Observer</class>
                         <method>admin_session_user_login_success</method>
-                    </Zaclee_QuarkBar_Model_AdminLoginSuccessObserver>
+                    </Zaclee_QuarkBar_Model_Observer_AdminLoginSuccess>
                 </observers>
             </admin_session_user_login_success>
         </events>
