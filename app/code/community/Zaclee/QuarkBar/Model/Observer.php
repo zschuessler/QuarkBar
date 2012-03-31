@@ -16,7 +16,7 @@ class Zaclee_QuarkBar_Model_Observer
         if ($request->isAjax()) {
             return;
         }
-
+        
         // Show QuarkBar block
         if ($this->_authorizedAdmin()) {
             echo Mage::app()->getLayout()
@@ -35,7 +35,15 @@ class Zaclee_QuarkBar_Model_Observer
         Mage::getModel('core/cookie')->set('quark_bar', 'admin');
         
         // Set salt that only the core session has access to
-        Mage::getModel('core/cookie')->set('quark_bar_salt', Mage::getSingleton('core/session')->getFormKey());
+        $quarkSession = Mage::getModel('quarkbar/session');
+        $salt = Mage::getSingleton('core/session')->getFormKey();
+        
+        if( isset($salt) ) {
+            $quarkSession->setSalt($salt);
+        }
+        
+        $quarkSession->setIdentifier('admin!');
+        $quarkSession->save();
     }
 
     /**

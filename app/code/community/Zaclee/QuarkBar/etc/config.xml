@@ -85,14 +85,14 @@
         <models>
             <quarkbar>
                 <class>Zaclee_QuarkBar_Model</class>
-                <resourceModel>oscommerce_mysql4</resourceModel>
+                <resourceModel>quarkbar_mysql4</resourceModel>
             </quarkbar>
             <quarkbar_mysql4>
                 <class>Zaclee_QuarkBar_Model_Mysql4</class>
                 <entities>
-                    <quarksession>
+                    <session>
                         <table>quarkbar_session</table>
-                    </quarksession>
+                    </session>
                 </entities>
             </quarkbar_mysql4>       
         </models>
