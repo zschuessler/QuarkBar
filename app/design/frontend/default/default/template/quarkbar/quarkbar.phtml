@@ -1,0 +1,38 @@
+<div id="quark-navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">
+                <?php echo Mage::app()->getStore()->getName(); ?>
+            </a>
+            <ul class="nav">
+                <li>
+                    <?php echo $this->getDashboardLink(); ?>
+                </li>
+
+                <?php echo $this->getPageEditLink(); ?>
+
+                <li class="dropdown">
+                    <a href="#"
+                       class="dropdown-toggle"
+                       data-toggle="dropdown">
+                        Developer
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Cache / Indexes</li>
+                        <li class="divider"></li>
+                        <li id="quark-clear-cache">
+                            <a href="#">Clear Cache</a>
+                        </li>
+                        <li id="quark-rebuild-indexes">
+                            <a href="#">Rebuild Indexes</a>
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="quark-nav-status" class="alert fade in"></div>
+</div>
+<div style="clear:both;height:40px;"></div>

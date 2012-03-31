@@ -8,15 +8,25 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
      */
     protected $_quarkSession;
     
+    /**
+     * Path to template file in theme.
+     *
+     * @var string
+     */
+    protected $_template = 'quarkbar/quarkbar.phtml';
+    
     public function _construct()
     {
         parent::_construct();
         $this->_quarkSession = Mage::getModel('quarkbar/session');
+        $this->setTemplate('quarkbar/quarkbar.phtml');
     }
     
     protected function _toHtml()
     {
-        echo $this->_buildNavbar();
+       $html = $this->renderView();
+       
+       return $html;
     }
 
     protected function _prepareLayout()
@@ -29,60 +39,13 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
                 ->addCss('quarkbar/css/styles.css');
     }
 
-    protected function _buildNavbar()
-    {
-        return sprintf('
-            <div id="quark-navbar" class="navbar navbar-fixed-top">
-                <div class="navbar-inner">
-                    <div class="container">
-                    <a class="brand" href="/">
-                        %s
-                    </a>
-                    <ul class="nav">
-                        <li>
-                            %s
-                        </li>
-                        
-                        %s
-                        
-                        <li class="dropdown">
-                            <a href="#"
-                                class="dropdown-toggle"
-                                data-toggle="dropdown">
-                                Developer
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-header">Cache / Indexes</li>
-                                <li class="divider"></li>
-                                <li id="quark-clear-cache">
-                                    <a href="#">Clear Cache</a>
-                                </li>
-                                <li id="quark-rebuild-indexes">
-                                    <a href="#">Rebuild Indexes</a>
-                                </li>
-                                <li class="divider"></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-                <div id="quark-nav-status" class="alert fade in"></div>
-             </div>
-             <div style="clear:both;height:40px;"></div>',
-                Mage::app()->getStore()->getName(),
-                $this->_getDashboardLink(),
-                $this->_getPageEditLink()
-        );
-    }
-
     /**
      * Shows an admin link or a store link to easily switch between
      * frontend/admin modules
      * 
      * @return string 
      */
-    protected function _getDashboardLink()
+    public function getDashboardLink()
     {
         if ('admin' == Mage::app()->getRequest()->getModuleName()) {
             return '<a href="/">View Frontend</a>';
@@ -96,7 +59,7 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
      * 
      * @return string 
      */
-    protected function _getPageEditLink()
+    public function getPageEditLink()
     {
         // Edit links are only useful for the frontend module
         if('admin' == Mage::app()->getRequest()->getModuleName() ) {
