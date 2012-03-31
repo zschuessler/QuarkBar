@@ -2,7 +2,18 @@
 
 class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 {
-
+    /**
+     * The quark_session model
+     * @var Zaclee_QuarkBar_Model_Session 
+     */
+    protected $_quarkSession;
+    
+    public function _construct()
+    {
+        parent::_construct();
+        $this->_quarkSession = Mage::getModel('quarkbar/session');
+    }
+    
     protected function _toHtml()
     {
         echo $this->_buildNavbar();
@@ -92,7 +103,7 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
             return;
         }
         
-        $salt = Mage::getModel('core/cookie')->get('quark_bar_salt');
+        $salt = $this->_quarkSession->getSaltByIdentifier('admin!');
         
         if (Mage::registry('current_product')) {
             $secret = 'catalog_product' . 'edit' . $salt;
