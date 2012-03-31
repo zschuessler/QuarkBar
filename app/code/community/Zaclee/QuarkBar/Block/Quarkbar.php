@@ -2,41 +2,48 @@
 
 class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 {
+
     /**
      * The quark_session model
      * @var Zaclee_QuarkBar_Model_Session 
      */
     protected $_quarkSession;
-    
+
     /**
      * Path to template file in theme.
      *
      * @var string
      */
     protected $_template = 'quarkbar/quarkbar.phtml';
-    
+
     public function _construct()
     {
         parent::_construct();
         $this->_quarkSession = Mage::getModel('quarkbar/session');
         $this->setTemplate('quarkbar/quarkbar.phtml');
     }
-    
+
     protected function _toHtml()
     {
-       $html = $this->renderView();
-       
-       return $html;
+        $html = $this->renderView();
+
+        return $html;
     }
 
     protected function _prepareLayout()
     {
-        $this->getLayout()->getBlock('head')
-                ->addJs('quarkbar/jquery/jquery-1.7.2.min.js')
-                ->addJs('quarkbar/bootstrap/js/bootstrap.js')
-                ->addJs('quarkbar/quark.js')
-                ->addCss('quarkbar/bootstrap/css/bootstrap.min.css')
-                ->addCss('quarkbar/css/styles.css');
+        /**
+         * Check for the head block, since the Magento installer
+         * does not have this block and will error out. 
+         */
+        if ($this->getLayout()->getBlock('head')) {
+            $this->getLayout()->getBlock('head')
+                    ->addJs('quarkbar/jquery/jquery-1.7.2.min.js')
+                    ->addJs('quarkbar/bootstrap/js/bootstrap.js')
+                    ->addJs('quarkbar/quark.js')
+                    ->addCss('quarkbar/bootstrap/css/bootstrap.min.css')
+                    ->addCss('quarkbar/css/styles.css');
+        }
     }
 
     /**
@@ -62,36 +69,31 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
     public function getPageEditLink()
     {
         // Edit links are only useful for the frontend module
-        if('admin' == Mage::app()->getRequest()->getModuleName() ) {
+        if ('admin' == Mage::app()->getRequest()->getModuleName()) {
             return;
         }
-        
+
         $salt = $this->_quarkSession->getSaltByIdentifier('admin!');
-        
+
         if (Mage::registry('current_product')) {
             $secret = 'catalog_product' . 'edit' . $salt;
-            $key = Mage::helper('core')->getHash($secret);
-            
+            $key    = Mage::helper('core')->getHash($secret);
+
             $product = Mage::getModel('catalog/product')
-               ->load(Mage::app()->getRequest()->getParam('id'));
-            
-            return sprintf('<li><a href="/admin/catalog_product/edit/id/%s/key/%s">Edit %s</a></li>',
-                    $product->getId(),
-                    $key,
-                    $this->htmlEscape($product->getName())
-                    );
+                    ->load(Mage::app()->getRequest()->getParam('id'));
+
+            return sprintf('<li><a href="/admin/catalog_product/edit/id/%s/key/%s">Edit %s</a></li>', $product->getId(), $key, $this->htmlEscape($product->getName())
+            );
         }
-        
-        if(Mage::registry('current_category')) {
+
+        if (Mage::registry('current_category')) {
             $secret = 'catalog_category' . 'index' . $salt;
-            $key = Mage::helper('core')->getHash($secret);
-            
-            return sprintf('<li><a href="/admin/catalog_category/index/key/%s">Edit Categories</a></li>',
-                    $key
-                    );
-            
+            $key    = Mage::helper('core')->getHash($secret);
+
+            return sprintf('<li><a href="/admin/catalog_category/index/key/%s">Edit Categories</a></li>', $key
+            );
         }
-        
+
         return;
     }
 
