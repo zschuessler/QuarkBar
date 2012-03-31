@@ -25,9 +25,21 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 
     protected function _toHtml()
     {
+        echo $this->getArea();
         $html = $this->renderView();
 
         return $html;
+    }
+    
+    /**
+     * Always set area as frontend, so we can use a single
+     * template instead of two for both frontend and admin areas.
+     * 
+     * @return string
+     */
+    public function getArea()
+    {
+        return 'frontend';
     }
 
     protected function _prepareLayout()
