@@ -4,7 +4,6 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 {
 
     /**
-     * The quark_session model
      * @var Zaclee_QuarkBar_Model_Session 
      */
     protected $_quarkSession;

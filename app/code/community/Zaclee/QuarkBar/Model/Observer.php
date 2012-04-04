@@ -41,9 +41,15 @@ class Zaclee_QuarkBar_Model_Observer
         if( isset($salt) ) {
             $quarkSession->setSalt($salt);
         }
+        // Hash the random data to get a predictable format and length
+        $hash = hash('sha256', openssl_random_pseudo_bytes(1024, $cryptoStrong));
         
-        $quarkSession->setIdentifier('admin!');
-        $quarkSession->save();
+        if($cryptoStrong) {
+            $quarkSession->setIdentifier($hash); 
+            $quarkSession->save();
+        } else {
+            Mage::log('Unable to create secure crypt key.');
+        }
     }
 
     /**
