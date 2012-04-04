@@ -17,10 +17,14 @@ class Zaclee_QuarkBar_Model_Session extends Mage_Core_Model_Abstract
     {
         $quarkCookie = Mage::getModel('core/cookie')->get('quark_bar');
         
-        if( isset($quarkCookie) ) {
+        $quarkSession = $this->getCollection()
+                             ->addFieldToFilter('identifier', $quarkCookie)
+                             ->getData();
+
+        if( count($quarkSession) ) {
             return true;
         }
-        
+
         return false;
     }
     
@@ -44,6 +48,22 @@ class Zaclee_QuarkBar_Model_Session extends Mage_Core_Model_Abstract
         
         if( isset($quarkSession[0]['salt'])) {
             return $quarkSession[0]['salt'];
+        }
+       
+        return false;
+    }
+    
+    /**
+     * Gets the session by admin username 
+     */
+    public function getSessionByAdmin($username)
+    {
+        $quarkSession = $this->getCollection()
+                             ->addFieldToFilter('user', $username)
+                             ->getData();
+        
+        if( count($quarkSession) ) {
+            return $quarkSession[0];
         }
        
         return false;

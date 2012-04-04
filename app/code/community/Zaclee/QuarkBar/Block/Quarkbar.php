@@ -24,7 +24,9 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 
     protected function _toHtml()
     {
-        echo $this->getArea();
+        $model = Mage::getModel('quarkbar/session');
+        
+    
         $html = $this->renderView();
 
         return $html;
