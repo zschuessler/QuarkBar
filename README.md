@@ -8,9 +8,9 @@ QuarkBar is similar to the WordPress implementation of an administration bar.
 Pending Tasks for First Release
 -------------------------------
 
-### Security
+### Functionality
 
-0. Implement a secure key to serve as an admin flag. Store as a session in the database and in a cookie.
+0. Remove quarkbar session when admin logs out
 
 ### Design
 
