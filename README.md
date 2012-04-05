@@ -11,8 +11,8 @@ Pending Tasks for First Release
 ### Functionality
 
 0. Remove quarkbar session when admin logs out
+0. Add logout button in QuarkBar navigation
 
 ### Design
 
 0. Fix compatibility issues with Twitter Bootstrap CSS by namespacing styles used.
-0. Reorganize layout for a better user experience
