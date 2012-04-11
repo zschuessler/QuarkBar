@@ -12,6 +12,7 @@ Pending Tasks for First Release
 
 0. Remove quarkbar session when admin logs out
 0. Add logout button in QuarkBar navigation
+0. Update formkey for category links in the nav bar
 
 ### Design
 
