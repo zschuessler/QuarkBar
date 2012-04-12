@@ -16,13 +16,12 @@ If you are only looking to download QuarkBar, the .tgz package in the root direc
 
 See problems? Have feedback? *Please* create an issue so I can keep track of it.
 
-Why The Name?
--------------
+### Why The Name?
 
 Quark is easily one of the best Star Trek: Deep Space Nine characters of all time. This extension creates an admin 'bar' -- Quark owns a bar! QuarkBar.
 
 Roadmap
--------------------------------
+-------
 
 ### Functionality
 
