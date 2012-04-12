@@ -53,3 +53,31 @@ jQuery(document).ready(function() {
         });
     });
 });
+
+
+/**
+ *  Log user out
+ */
+jQuery(document).ready(function() {
+    jQuery('#quark-logout').click(function() {
+        var status = jQuery('#quark-nav-status');
+        
+        jQuery.ajax({
+            url: '/quarkbar/ajax/logout',
+            dataType: 'json',
+            success: function(data) {
+                if( data.status == 1 ) {
+                    status.html(data.message);
+                    status.show('fast').fadeOut(3000);
+                    location.reload();
+                } else {
+                    status.show('fast');
+                }
+            },
+            error: function(data, textStatus) {
+                status.html(textStatus);
+                status.show('fast');
+            }
+        });
+    });
+});

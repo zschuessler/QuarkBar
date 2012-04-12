@@ -19,14 +19,15 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
     {
         parent::_construct();
         $this->_quarkSession = Mage::getModel('quarkbar/session');
+        if(!$this->_quarkSession->isAdmin()) {
+            return;
+        }
+        
         $this->setTemplate('quarkbar/quarkbar.phtml');
     }
 
     protected function _toHtml()
     {
-        $model = Mage::getModel('quarkbar/session');
-        
-    
         $html = $this->renderView();
 
         return $html;
@@ -45,6 +46,10 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
 
     protected function _prepareLayout()
     {
+        if(!$this->_quarkSession->isAdmin()) {
+            return;
+        }
+        
         /**
          * Check for the head block, since the Magento installer
          * does not have this block and will error out. 
@@ -108,6 +113,13 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
         }
 
         return;
+    }
+    
+    public function getUser()
+    {
+        $identifier = Mage::getModel('core/cookie')->get('quark_bar');
+        $row = $this->_quarkSession->getUserByIdentifier($identifier);
+        return $row['user'];
     }
 
 }
