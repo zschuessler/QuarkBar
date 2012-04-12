@@ -1,0 +1,6 @@
+app/design/adminhtml/default/default/locale/
+app/design/adminhtml/default/default/layout/*.xml
+!app/design/adminhtml/default/default/layout/quarkbar.xml
+app/design/frontend/base/default/layout/*.xml
+!app/design/frontend/base/default/layout/quarkbar.xml
+app/design/frontend/default/
