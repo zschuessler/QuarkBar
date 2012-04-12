@@ -100,7 +100,7 @@ class Zaclee_QuarkBar_Block_Quarkbar extends Mage_Core_Block_Template
             $product = Mage::getModel('catalog/product')
                     ->load(Mage::app()->getRequest()->getParam('id'));
 
-            return sprintf('<li><a href="/admin/catalog_product/edit/id/%s/key/%s">Edit %s</a></li>', $product->getId(), $key, $this->htmlEscape($product->getName())
+            return sprintf('<li><a href="/admin/catalog_product/edit/id/%s/key/%s">Edit %s ..</a></li>', $product->getId(), $key, $this->htmlEscape(substr($product->getName(), 0, 20))
             );
         }
 
