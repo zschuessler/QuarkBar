@@ -51,7 +51,7 @@ class Zaclee_QuarkBar_Model_Observer
             
             Mage::getModel('core/cookie')->set('quark_bar', $hash);
         } else {
-            Mage::log('Unable to create secure crypt key.');
+            Mage::throwException('Unable to create secure crypt key.');
         }
     }
 }
