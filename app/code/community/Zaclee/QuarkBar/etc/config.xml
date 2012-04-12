@@ -25,25 +25,7 @@
         </blocks>
     </global>
     
-    <!-- Add layout / template for QuarkBar -->
-    <frontend>
-        <layout>
-            <updates>
-                <quarkbar>
-                    <file>quarkbar.xml</file>
-                </quarkbar>
-            </updates>
-        </layout>
-    </frontend>
-    <adminhtml>
-        <layout>
-            <updates>
-                <quarkbar>
-                    <file>quarkbar.xml</file>
-                </quarkbar>
-            </updates>
-        </layout>
-    </adminhtml>
+   
     
     <!-- Add Front Controller -->
     <frontend>
