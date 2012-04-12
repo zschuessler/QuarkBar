@@ -22,7 +22,7 @@ class Zaclee_QuarkBar_Model_Session extends Mage_Core_Model_Abstract
                 ->addFieldToFilter('identifier', $quarkCookie)
                 ->getData();
 
-        if( count($quarkSession) ) {
+        if (count($quarkSession)) {
             return true;
         }
 
@@ -87,7 +87,7 @@ class Zaclee_QuarkBar_Model_Session extends Mage_Core_Model_Abstract
 
         return false;
     }
-    
+
     /**
      * Removes a session by identifier
      * 
@@ -95,11 +95,30 @@ class Zaclee_QuarkBar_Model_Session extends Mage_Core_Model_Abstract
      */
     public function removeSessionByIdentifier($id)
     {
-         $quarkSession = $this->getCollection()
+        $quarkSession = $this->getCollection()
                 ->addFieldToFilter('identifier', $id);
 
         if (count($quarkSession)) {
-            foreach( $quarkSession as $session) {
+            foreach ($quarkSession as $session) {
+                $session->delete();
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Clears sessions with a specific username
+     * 
+     * @param string $username 
+     */
+    public function clearSessionsByUser($username)
+    {
+        $quarkSession = $this->getCollection()
+                ->addFieldToFilter('user', $username);
+
+        if (count($quarkSession)) {
+            foreach ($quarkSession as $session) {
                 $session->delete();
             }
         }

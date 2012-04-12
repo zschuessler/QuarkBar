@@ -40,6 +40,7 @@ class Zaclee_QuarkBar_Model_Observer
         }
         
         // Set user
+        $quarkSession->clearSessionsByUser($event->getUser()->getUsername());
         $quarkSession->setUser($event->getUser()->getUsername());
         
         // Hash the random data to get a predictable format and length
