@@ -6,8 +6,7 @@ QuarkBar - A Magento Administration Bar
 
 QuarkBar is similar to the WordPress implementation of an administration bar. QuarkBar is currently in beta.
 
-Developed by Zachary Schuessler of [http://zaclee.net](http://zaclee.net), found on Twitter via [@zschuessler](https://twitter.com/#!/zschuessler). Made possible with the many hours of
-Magento love I enjoy working at [Delta Systems](http://deltasys.com).
+Developed by Zachary Schuessler of [http://zaclee.net](http://zaclee.net), found on Twitter via [@zschuessler](https://twitter.com/#!/zschuessler).
 
 Get QuarkBar!
 -------------
